@@ -6,10 +6,12 @@ use App\Models\Product;
 
 class ProductRepository
 {
-    public function searchProducts($query, $perPage = 10)
+    public function searchProducts($query = null,  $page = 1, $perPage = 10)
     {
-        return Product::where('name', 'like', '%' . $query . '%')
-            ->orWhere('description', 'like', '%' . $query . '%')
+        return Product::when($query, function ($query, $q) {
+            $q->where('name', 'like', '%' . $query . '%')
+                ->orWhere('desc', 'like', '%' . $query . '%');
+            })
             ->where('is_active', true)
             ->paginate($perPage);
     }

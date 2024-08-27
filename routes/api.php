@@ -16,7 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // public products
-Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/products', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 
 // private products

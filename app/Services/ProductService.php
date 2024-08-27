@@ -16,9 +16,9 @@ class ProductService
         $this->productRepository = $productRepository;
     }
 
-    public function searchProducts($query, $perPage = 10)
+    public function searchProducts($query, $page, $perPage = 10)
     {
-        return $this->productRepository->searchProducts($query, $perPage);
+        return $this->productRepository->searchProducts($query, $page, $perPage);
     }
 
 
